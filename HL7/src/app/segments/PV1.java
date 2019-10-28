@@ -7,9 +7,18 @@ import java.util.Set;
 import app.datatypes.XCN;
 
 /**
- * PV1
+ * Java representation of segment "PV1" from HL7 protocol. Visit <a href=
+ * "http://hl7-definition.caristix.com:9010/Default.aspx?version=HL7+v2.5.1&segment=PV1">HL7
+ * documentation</a> for more info.
+ * 
+ * @author Thomas Biedermann
+ * @author Daniel Karner
+ * @version 1.1
+ * @since 2019-10-27
  */
-public class PV1 {
+
+public class PV1 
+{
     private long setIDPV1;
     private String patientClass;
     private String assignedPatientLocation;
@@ -116,24 +125,63 @@ public class PV1 {
      * @param alternateVisitID
      * @param visitIndicator
      * @param otherHealthcareProvider
+     * @return PV1 instance
      */
-    public PV1(long setIDPV1,  String patientClass, String assignedPatientLocation, String admissionType,
-            String preadmitNumber, String priorPatientLocation, Set<XCN> attendingDoctor, Set<XCN> referringDoctor,
-            Set<XCN> consultingDoctor, String hospitalService, String temporaryLocation,
-            String preadmitTestIndicator, String readmissionIndicator, String admitSource,
-            Set<String> ambulatoryStatus, String vIPIndicator, Set<XCN> admittingDoctor, String patientType,
-            String visitNumber, Set<String> financialClass, String chargePriceIndicator, String courtesyCode,
-            String creditRating, Set<String> contractCode, Set<LocalDate> contractEffectiveDate,
-            Set<Double> contractAmount, Set<Double> contractPeriod, String interestCode,
-            String transfertoBadDebtCode, LocalDate transfertoBadDebtDate, String badDebtAgencyCode,
-            double badDebtTransferAmount, double badDebtRecoveryAmount, String deleteAccountIndicator,
-            LocalDate deleteAccountDate, String dischargeDisposition, String dischargedtoLocation,
-            String dietType, String servicingFacility, String bedStatus, String accountStatus,
-            String pendingLocation, String priorTemporaryLocation, LocalDateTime admitDateTime,
-            Set<LocalDateTime> dischargeDateTime, double currentPatientBalance, double totalCharges,
-            double totalAdjustments, double totalPayments, String alternateVisitID, String visitIndicator,
-            Set<XCN> otherHealthcareProvider) {
 
+    public PV1(
+        long setIDPV1,  
+        String patientClass, 
+        String assignedPatientLocation, 
+        String admissionType,
+        String preadmitNumber, 
+        String priorPatientLocation, 
+        Set<XCN> attendingDoctor, 
+        Set<XCN> referringDoctor,
+        Set<XCN> consultingDoctor, 
+        String hospitalService, 
+        String temporaryLocation,
+        String preadmitTestIndicator, 
+        String readmissionIndicator, 
+        String admitSource,
+        Set<String> ambulatoryStatus, 
+        String vIPIndicator, 
+        Set<XCN> admittingDoctor, 
+        String patientType,
+        String visitNumber, 
+        Set<String> financialClass, 
+        String chargePriceIndicator, 
+        String courtesyCode,
+        String creditRating, 
+        Set<String> contractCode, 
+        Set<LocalDate> contractEffectiveDate,
+        Set<Double> contractAmount, 
+        Set<Double> contractPeriod, 
+        String interestCode,
+        String transfertoBadDebtCode, 
+        LocalDate transfertoBadDebtDate, 
+        String badDebtAgencyCode,
+        double badDebtTransferAmount, 
+        double badDebtRecoveryAmount, 
+        String deleteAccountIndicator,
+        LocalDate deleteAccountDate, 
+        String dischargeDisposition, 
+        String dischargedtoLocation,
+        String dietType, 
+        String servicingFacility, 
+        String bedStatus, 
+        String accountStatus,
+        String pendingLocation, 
+        String priorTemporaryLocation, 
+        LocalDateTime admitDateTime,
+        Set<LocalDateTime> dischargeDateTime, 
+        double currentPatientBalance, 
+        double totalCharges,
+        double totalAdjustments, 
+        double totalPayments, 
+        String alternateVisitID, 
+        String visitIndicator,
+        Set<XCN> otherHealthcareProvider) 
+        {
         this.setIDPV1 = setIDPV1;
         this.patientClass = patientClass;
         this.assignedPatientLocation = assignedPatientLocation;

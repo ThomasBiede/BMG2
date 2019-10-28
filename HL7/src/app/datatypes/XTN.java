@@ -1,10 +1,18 @@
 package app.datatypes;
 
 /**
- * XTN
+ * Java representation of datatype "XTN" from HL7 protocol. Visit <a href=
+ * "http://hl7-definition.caristix.com:9010/Default.aspx?version=HL7+v2.5.1&dataType=XTN">HL7
+ * documentation</a> for more info.
+ * 
+ * @author Thomas Biedermann
+ * @author Daniel Karner
+ * @version 1.1
+ * @since 2019-10-27
  */
-public class XTN {
 
+public class XTN 
+{
     private String telephoneNumber;
     private String telecommunicationUseCode;
     private String telecommunicationEquipmentType;
@@ -31,10 +39,23 @@ public class XTN {
      * @param extensionPrefix
      * @param speedDialCode
      * @param unformattedTelephoneNumber
+     * @return XTN instance
      */
-    public XTN(String telephoneNumber, String telecommunicationUseCode, String telecommunicationEquipmentType,
-            String emailAddress, double countryCode, double areaCityCode, double localNumber, double extension,
-            String anyText, String extensionPrefix, String speedDialCode, String unformattedTelephoneNumber) {
+
+    public XTN(
+        String telephoneNumber, 
+        String telecommunicationUseCode, 
+        String telecommunicationEquipmentType,
+        String emailAddress, 
+        double countryCode, 
+        double areaCityCode, 
+        double localNumber, 
+        double extension,
+        String anyText, 
+        String extensionPrefix, 
+        String speedDialCode, 
+        String unformattedTelephoneNumber) 
+        {
 
         this.telephoneNumber = telephoneNumber;
         this.telecommunicationUseCode = telecommunicationUseCode;

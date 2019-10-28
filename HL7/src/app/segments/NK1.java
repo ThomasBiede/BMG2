@@ -8,10 +8,18 @@ import app.datatypes.XPN;
 import app.datatypes.XTN;
 
 /**
- * NV1
+ * Java representation of segment "NK1" from HL7 protocol. Visit <a href=
+ * "http://hl7-definition.caristix.com:9010/Default.aspx?version=HL7+v2.5.1&segment=NK1">HL7
+ * documentation</a> for more info.
+ * 
+ * @author Thomas Biedermann
+ * @author Daniel Karner
+ * @version 1.1
+ * @since 2019-10-27
  */
-public class NK1 {
 
+public class NK1 
+{
     private long setIDNK1;
     private XPN nKName;
     private String relationship;
@@ -92,18 +100,50 @@ public class NK1 {
      * @param contactPersonSocialSecurityNumber
      * @param nextofKinBirthPlace
      * @param vIPIndicator
+     * @return NK1 instance
      */
-    public NK1( long setIDNK1, XPN nKName, String relationship, XAD address, XTN phoneNumber,
-            XTN businessPhoneNumber, String contactRole, LocalDate startDate, LocalDate endDate,
-            String nextofKinAssociatedPartiesJobTitle, String nextofKinAssociatedPartiesJobCodeClass,
-            String nextofKinAssociatedPartiesEmployeeNumber, String organizationNameNK1,
-            String maritalStatus, String administrativeSex, LocalDateTime dateTimeofBirth,
-            String livingDependency, String ambulatoryStatus, String citizenship, String primaryLanguage,
-            String livingArrangement, String publicityCode, String protectionIndicator, String studentIndicator,
-            String religion, XPN mothersMaidenName, String nationality, String ethnicGroup, String contactReason,
-            XPN contactPersonsName, XTN contactPersonsTelephoneNumber, XAD contactPersonsAddress,
-            String nextofKinAssociatedPartysIdentifiers, String jobStatus, String race, String handicap,
-            String contactPersonSocialSecurityNumber, String nextofKinBirthPlace, String vIPIndicator) {
+
+    public NK1( 
+        long setIDNK1, 
+        XPN nKName, 
+        String relationship, 
+        XAD address, 
+        XTN phoneNumber,
+        XTN businessPhoneNumber, 
+        String contactRole, 
+        LocalDate startDate, 
+        LocalDate endDate,
+        String nextofKinAssociatedPartiesJobTitle, 
+        String nextofKinAssociatedPartiesJobCodeClass,
+        String nextofKinAssociatedPartiesEmployeeNumber, 
+        String organizationNameNK1,
+        String maritalStatus, 
+        String administrativeSex, 
+        LocalDateTime dateTimeofBirth,
+        String livingDependency, 
+        String ambulatoryStatus, 
+        String citizenship, 
+        String primaryLanguage,
+        String livingArrangement, 
+        String publicityCode, 
+        String protectionIndicator, 
+        String studentIndicator,
+        String religion, 
+        XPN mothersMaidenName, 
+        String nationality, 
+        String ethnicGroup, 
+        String contactReason,
+        XPN contactPersonsName, 
+        XTN contactPersonsTelephoneNumber, 
+        XAD contactPersonsAddress,
+        String nextofKinAssociatedPartysIdentifiers, 
+        String jobStatus, 
+        String race, 
+        String handicap,
+        String contactPersonSocialSecurityNumber, 
+        String nextofKinBirthPlace, 
+        String vIPIndicator) 
+        {
 
         this.setIDNK1 = setIDNK1;
         this.nKName = nKName;

@@ -3,10 +3,18 @@ package app.datatypes;
 import java.time.LocalDate;
 
 /**
- * XCN
+ * Java representation of datatype "XCN" from HL7 protocol. Visit <a href=
+ * "http://hl7-definition.caristix.com:9010/Default.aspx?version=HL7+v2.5.1&dataType=XCN">HL7
+ * documentation</a> for more info.
+ * 
+ * @author Thomas Biedermann
+ * @author Daniel Karner
+ * @version 1.1
+ * @since 2019-10-27
  */
-public class XCN {
 
+public class XCN 
+{
     private String idNumber;
     private String familyName;
     private String givenName;
@@ -55,15 +63,34 @@ public class XCN {
      * @param professionalSuffix
      * @param assigningJurisdiction
      * @param assigningAgencyOrDepartment
+     * @return XCN instance
      */
-    public XCN(String idNumber, String familyName, String givenName,
-            String secondAndFurtherGivenNamesOrInitialsThereof, String suffixegJrOrIii,
-            String prefixegDr, String degreeegMd, String sourceTable, String assigningAuthority,
-            String nameTypeCode, String identifierCheckDigit, String checkDigitScheme,
-            String identifierTypeCode, String assigningFacility, String nameRepresentationCode,
-            String nameContext, Object nameValidityRange, String nameAssemblyOrder, LocalDate effectiveDate,
-            LocalDate expirationDate, String professionalSuffix, String assigningJurisdiction,
-            String assigningAgencyOrDepartment) {
+
+    public XCN(
+        String idNumber, 
+        String familyName, 
+        String givenName,
+        String secondAndFurtherGivenNamesOrInitialsThereof, 
+        String suffixegJrOrIii,
+        String prefixegDr, 
+        String degreeegMd, 
+        String sourceTable, 
+        String assigningAuthority,
+        String nameTypeCode, 
+        String identifierCheckDigit, 
+        String checkDigitScheme,
+        String identifierTypeCode, 
+        String assigningFacility, 
+        String nameRepresentationCode,
+        String nameContext, 
+        Object nameValidityRange, 
+        String nameAssemblyOrder, 
+        LocalDate effectiveDate,
+        LocalDate expirationDate, 
+        String professionalSuffix, 
+        String assigningJurisdiction,
+        String assigningAgencyOrDepartment) 
+        {
 
         this.idNumber = idNumber;
         this.familyName = familyName;

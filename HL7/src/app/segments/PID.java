@@ -8,10 +8,18 @@ import app.datatypes.XPN;
 import app.datatypes.XTN;
 
 /**
- * PID
+ * Java representation of segment "PID" from HL7 protocol. Visit <a href=
+ * "http://hl7-definition.caristix.com:9010/Default.aspx?version=HL7+v2.5.1&segment=PID">HL7
+ * documentation</a> for more info.
+ * 
+ * @author Thomas Biedermann
+ * @author Daniel Karner
+ * @version 1.1
+ * @since 2019-10-27
  */
-public class PID {
 
+public class PID 
+{
     private long setIDPID;
     private String patientID;
     private Set<String> patientIdentifierList;
@@ -92,19 +100,50 @@ public class PID {
      * @param strain
      * @param productionClassCode
      * @param tribalCitizenship
+     * @return PID instance
      */
-    public PID(long setIDPID, String patientID,  Set<String> patientIdentifierList,
-            Set<String> alternatePatientIDPID,  Set<XPN> patientName, Set<XPN> mothersMaidenName,
-            LocalDateTime dateTimeofBirth, String administrativeSex, Set<XPN> patientAlias, Set<String> race,
-            Set<XAD> patientAddress, String countyCode, Set<XTN> phoneNumberHome,
-            Set<XTN> phoneNumberBusiness, String primaryLanguage, String maritalStatus, String religion,
-            String patientAccountNumber, String sSNNumberPatient, long driversLicenseNumberPatient,
-            Set<String> mothersIdentifier, Set<String> ethnicGroup, String birthPlace,
-            String multipleBirthIndicator, double birthOrder, Set<String> citizenship,
-            String veteransMilitaryStatus, String nationality, LocalDateTime patientDeathDateandTime,
-            String patientDeathIndicator, String identityUnknownIndicator, Set<String> identityReliabilityCode,
-            LocalDateTime lastUpdateDateTime, String lastUpdateFacility, String speciesCode, String breedCode,
-            String strain, String productionClassCode, Set<String> tribalCitizenship) {
+
+    public PID(
+        long setIDPID, 
+        String patientID,  
+        Set<String> patientIdentifierList,
+        Set<String> alternatePatientIDPID,  
+        Set<XPN> patientName, 
+        Set<XPN> mothersMaidenName,
+        LocalDateTime dateTimeofBirth, 
+        String administrativeSex, 
+        Set<XPN> patientAlias, 
+        Set<String> race,
+        Set<XAD> patientAddress, 
+        String countyCode, 
+        Set<XTN> phoneNumberHome,
+        Set<XTN> phoneNumberBusiness, 
+        String primaryLanguage, 
+        String maritalStatus, 
+        String religion,
+        String patientAccountNumber, 
+        String sSNNumberPatient, 
+        long driversLicenseNumberPatient,
+        Set<String> mothersIdentifier, 
+        Set<String> ethnicGroup, 
+        String birthPlace,
+        String multipleBirthIndicator, 
+        double birthOrder, 
+        Set<String> citizenship,
+        String veteransMilitaryStatus, 
+        String nationality, 
+        LocalDateTime patientDeathDateandTime,
+        String patientDeathIndicator, 
+        String identityUnknownIndicator, 
+        Set<String> identityReliabilityCode,
+        LocalDateTime lastUpdateDateTime, 
+        String lastUpdateFacility, 
+        String speciesCode, 
+        String breedCode,
+        String strain, 
+        String productionClassCode, 
+        Set<String> tribalCitizenship) 
+        {
 
         this.setIDPID = setIDPID;
         this.patientID = patientID;
