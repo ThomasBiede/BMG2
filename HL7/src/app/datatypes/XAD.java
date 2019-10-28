@@ -3,10 +3,18 @@ package app.datatypes;
 import java.time.LocalDate;
 
 /**
- * XAD
+ * Java representation of datatype "XAD" from HL7 protocol. Visit <a href=
+ * "http://hl7-definition.caristix.com:9010/Default.aspx?version=HL7+v2.5.1&dataType=XAD">HL7
+ * documentation</a> for more info.
+ * 
+ * @author Thomas Biedermann
+ * @author Daniel Karner
+ * @version 1.1
+ * @since 2019-10-27
  */
-public class XAD {
 
+public class XAD 
+{
     private String streetAddress;
     private String otherDesignation;
     private String city;
@@ -37,11 +45,25 @@ public class XAD {
      * @param addressValidityRange
      * @param effectiveDate
      * @param expirationDate
+     * @return XAD instance
      */
-    public XAD(String streetAddress, String otherDesignation, String city, String stateOrProvince,
-            String zipOrPostalCode, String country, String addressType, String otherGeographicDesignation,
-            String countyParishCode, String censusTract, String addressRepresentationCode,
-            Object addressValidityRange, LocalDate effectiveDate, LocalDate expirationDate) {
+
+    public XAD(
+        String streetAddress, 
+        String otherDesignation, 
+        String city, 
+        String stateOrProvince,
+        String zipOrPostalCode, 
+        String country, 
+        String addressType, 
+        String otherGeographicDesignation,
+        String countyParishCode, 
+        String censusTract, 
+        String addressRepresentationCode, 
+        Object addressValidityRange,
+        LocalDate effectiveDate, 
+        LocalDate expirationDate) 
+        {
 
         this.streetAddress = streetAddress;
         this.otherDesignation = otherDesignation;

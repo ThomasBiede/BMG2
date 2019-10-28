@@ -4,9 +4,18 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
- * MSH
+ * Java representation of segment "MSH" from HL7 protocol. Visit <a href=
+ * "http://hl7-definition.caristix.com:9010/Default.aspx?version=HL7+v2.5.1&segment=MSH">HL7
+ * documentation</a> for more info.
+ * 
+ * @author Thomas Biedermann
+ * @author Daniel Karner
+ * @version 1.1
+ * @since 2019-10-27
  */
-public class MSH {
+
+public class MSH 
+{
     private String fieldSeparator;
     private String encodingCharacters;
     private String sendingApplication;
@@ -28,7 +37,6 @@ public class MSH {
     private String principalLanguageOfMessage;
     private String alternateCharacterSetHandlingScheme;
     private Set<String> messageProfileIdentifier;
-
 
     /**
      * @param fieldSeparator
@@ -52,14 +60,32 @@ public class MSH {
      * @param principalLanguageOfMessage
      * @param alternateCharacterSetHandlingScheme
      * @param messageProfileIdentifier
+     * @return MSH instance
      */
-    MSH(String fieldSeparator, String encodingCharacters, String sendingApplication, String sendingFacility,
-            String receivingApplication, String receivingFacility, LocalDateTime dateTimeOfMessage,
-            String security, String messageType, String messageControlID, long processingID, long versionID,
-            double sequenceNumber, String continuationPointer, String acceptAcknowledgmentType,
-            String applicationAcknowledgmentType, String countryCode, Set<String> characterSet,
-            String principalLanguageOfMessage, String alternateCharacterSetHandlingScheme,
-            Set<String> messageProfileIdentifier) {
+
+    MSH(
+        String fieldSeparator, 
+        String encodingCharacters, 
+        String sendingApplication, 
+        String sendingFacility,
+        String receivingApplication, 
+        String receivingFacility, 
+        LocalDateTime dateTimeOfMessage,
+        String security, 
+        String messageType, 
+        String messageControlID, 
+        long processingID, 
+        long versionID,
+        double sequenceNumber, 
+        String continuationPointer, 
+        String acceptAcknowledgmentType,
+        String applicationAcknowledgmentType, 
+        String countryCode, 
+        Set<String> characterSet,
+        String principalLanguageOfMessage, 
+        String alternateCharacterSetHandlingScheme,
+        Set<String> messageProfileIdentifier) 
+        {
 
         this.fieldSeparator = fieldSeparator;
         this.encodingCharacters = encodingCharacters;

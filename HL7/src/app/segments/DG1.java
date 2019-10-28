@@ -5,10 +5,18 @@ import java.time.LocalDateTime;
 import app.datatypes.XCN;
 
 /**
- * DG1
+ * Java representation of segment "XCN" from HL7 protocol. Visit <a href=
+ * "http://hl7-definition.caristix.com:9010/Default.aspx?version=HL7+v2.5.1&segment=XCN">HL7
+ * documentation</a> for more info.
+ * 
+ * @author Thomas Biedermann
+ * @author Daniel Karner
+ * @version 1.1
+ * @since 2019-10-27
  */
-public class DG1 {
 
+public class DG1 
+{
     private long setIDDG1;
     private String diagnosisCodingMethod;
     private String diagnosisCodeDG1;
@@ -53,14 +61,32 @@ public class DG1 {
      * @param attestationDateTime
      * @param diagnosisIdentifier
      * @param diagnosisActionCode
+     * @return DG1 instance
      */
-    public DG1( long setIDDG1, String diagnosisCodingMethod, String diagnosisCodeDG1,
-            String diagnosisDescription, LocalDateTime diagnosisDateTime,  String diagnosisType,
-            String majorDiagnosticCategory, String diagnosticRelatedGroup, String dRGApprovalIndicator,
-            String dRGGrouperReviewCode, String outlierType, double outlierDays, long outlierCost,
-            String grouperVersionAndType, String diagnosisPriority, XCN diagnosingClinician,
-            String diagnosisClassification, String confidentialIndicator, LocalDateTime attestationDateTime,
-            String diagnosisIdentifier, String diagnosisActionCode) {
+
+    public DG1( 
+        long setIDDG1, 
+        String diagnosisCodingMethod, 
+        String diagnosisCodeDG1,
+        String diagnosisDescription, 
+        LocalDateTime diagnosisDateTime,  
+        String diagnosisType,
+        String majorDiagnosticCategory, 
+        String diagnosticRelatedGroup, 
+        String dRGApprovalIndicator,
+        String dRGGrouperReviewCode, 
+        String outlierType, 
+        double outlierDays, 
+        long outlierCost,
+        String grouperVersionAndType, 
+        String diagnosisPriority, 
+        XCN diagnosingClinician,
+        String diagnosisClassification, 
+        String confidentialIndicator, 
+        LocalDateTime attestationDateTime,
+        String diagnosisIdentifier, 
+        String diagnosisActionCode) 
+        {
 
         this.setIDDG1 = setIDDG1;
         this.diagnosisCodingMethod = diagnosisCodingMethod;

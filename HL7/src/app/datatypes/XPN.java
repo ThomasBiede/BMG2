@@ -3,10 +3,18 @@ package app.datatypes;
 import java.time.LocalDate;
 
 /**
- * XPN
+ * Java representation of datatype "XPN" from HL7 protocol. Visit <a href=
+ * "http://hl7-definition.caristix.com:9010/Default.aspx?version=HL7+v2.5.1&dataType=XPN">HL7
+ * documentation</a> for more info.
+ * 
+ * @author Thomas Biedermann
+ * @author Daniel Karner
+ * @version 1.1
+ * @since 2019-10-27
  */
-public class XPN {
 
+public class XPN 
+{
     private String familyName;
     private String givenName;
     private String secondAndFurtherGivenNamesOrInitialsThereof;
@@ -37,12 +45,25 @@ public class XPN {
      * @param effectiveDate
      * @param expirationDate
      * @param professionalSuffix
+     * @return XPN instance
      */
-    public XPN(String familyName, String givenName, String secondAndFurtherGivenNamesOrInitialsThereof,
-            String suffixegJrOrIii, String prefixegDr, String degreeegMd, String nameTypeCode,
-            String nameRepresentationCode, String nameContext, Object nameValidityRange,
-            String nameAssemblyOrder, LocalDate effectiveDate, LocalDate expirationDate,
-            String professionalSuffix) {
+
+    public XPN(
+        String familyName, 
+        String givenName, 
+        String secondAndFurtherGivenNamesOrInitialsThereof,
+        String suffixegJrOrIii, 
+        String prefixegDr, 
+        String degreeegMd, 
+        String nameTypeCode,
+        String nameRepresentationCode, 
+        String nameContext, 
+        Object nameValidityRange,
+        String nameAssemblyOrder, 
+        LocalDate effectiveDate, 
+        LocalDate expirationDate,
+        String professionalSuffix) 
+        {
 
         this.familyName = familyName;
         this.givenName = givenName;
