@@ -100,7 +100,6 @@ public class PID
      * @param strain
      * @param productionClassCode
      * @param tribalCitizenship
-     * @return PID instance
      */
 
     public PID(

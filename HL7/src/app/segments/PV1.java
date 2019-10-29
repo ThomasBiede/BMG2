@@ -125,7 +125,6 @@ public class PV1
      * @param alternateVisitID
      * @param visitIndicator
      * @param otherHealthcareProvider
-     * @return PV1 instance
      */
 
     public PV1(

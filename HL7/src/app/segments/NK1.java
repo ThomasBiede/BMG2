@@ -100,7 +100,6 @@ public class NK1
      * @param contactPersonSocialSecurityNumber
      * @param nextofKinBirthPlace
      * @param vIPIndicator
-     * @return NK1 instance
      */
 
     public NK1( 

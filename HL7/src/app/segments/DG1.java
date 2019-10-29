@@ -61,7 +61,6 @@ public class DG1
      * @param attestationDateTime
      * @param diagnosisIdentifier
      * @param diagnosisActionCode
-     * @return DG1 instance
      */
 
     public DG1( 

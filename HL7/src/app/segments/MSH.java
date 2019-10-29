@@ -14,7 +14,7 @@ import java.util.Set;
  * @since 2019-10-27
  */
 
-public class MSH 
+public class MSH
 {
     private String fieldSeparator;
     private String encodingCharacters;
@@ -60,10 +60,9 @@ public class MSH
      * @param principalLanguageOfMessage
      * @param alternateCharacterSetHandlingScheme
      * @param messageProfileIdentifier
-     * @return MSH instance
      */
 
-    MSH(
+    public MSH(
         String fieldSeparator, 
         String encodingCharacters, 
         String sendingApplication, 
@@ -108,5 +107,5 @@ public class MSH
         this.principalLanguageOfMessage = principalLanguageOfMessage;
         this.alternateCharacterSetHandlingScheme = alternateCharacterSetHandlingScheme;
         this.messageProfileIdentifier = messageProfileIdentifier;
-    }
+    }    
 }

@@ -18,13 +18,13 @@ import app.datatypes.XCN;
 
 public class EVN 
 {  
-    private String eventTypeCode;
-    private LocalDateTime recordedDateTime;
-    private LocalDateTime dateTimePlannedEvent;
-    private String eventReasonCode;
-    private Set<XCN> operatorID;
-    private LocalDateTime eventOccurred;
-    private String eventFacility;
+    public final String eventTypeCode;
+    public final LocalDateTime recordedDateTime;
+    public final LocalDateTime dateTimePlannedEvent;
+    public final String eventReasonCode;
+    public final Set<XCN> operatorID;
+    public final LocalDateTime eventOccurred;
+    public final String eventFacility;
 
     /**
      * @param eventTypeCode
@@ -34,7 +34,6 @@ public class EVN
      * @param operatorID
      * @param eventOccurred
      * @param eventFacility
-     * @return EVN instance
      */
 
     public EVN(
