@@ -18,7 +18,7 @@ import app.datatypes.XTN;
  * @since 2019-10-27
  */
 
-public class NK1 
+public class NK1 extends Segments
 {
     private long setIDNK1;
     private XPN nKName;

@@ -15,7 +15,7 @@ import app.datatypes.XCN;
  * @since 2019-10-27
  */
 
-public class DG1 
+public class DG1 extends Segments
 {
     private long setIDDG1;
     private String diagnosisCodingMethod;

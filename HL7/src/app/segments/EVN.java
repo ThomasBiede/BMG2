@@ -16,7 +16,7 @@ import app.datatypes.XCN;
  * @since 2019-10-27
  */
 
-public class EVN 
+public class EVN extends Segments
 {  
     public final String eventTypeCode;
     public final LocalDateTime recordedDateTime;

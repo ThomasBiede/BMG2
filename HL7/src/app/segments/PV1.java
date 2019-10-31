@@ -17,7 +17,7 @@ import app.datatypes.XCN;
  * @since 2019-10-27
  */
 
-public class PV1 
+public class PV1 extends Segments
 {
     private long setIDPV1;
     private String patientClass;

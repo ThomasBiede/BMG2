@@ -14,7 +14,7 @@ import java.util.Set;
  * @since 2019-10-27
  */
 
-public class MSH
+public class MSH extends Segments
 {
     private String fieldSeparator;
     private String encodingCharacters;

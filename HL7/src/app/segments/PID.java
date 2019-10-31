@@ -18,7 +18,7 @@ import app.datatypes.XTN;
  * @since 2019-10-27
  */
 
-public class PID 
+public class PID extends Segments
 {
     private long setIDPID;
     private String patientID;
