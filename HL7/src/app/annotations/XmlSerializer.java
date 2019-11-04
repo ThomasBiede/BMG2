@@ -1,6 +1,5 @@
 package app.annotations;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.Set;
@@ -9,83 +8,69 @@ import java.util.Set;
  * XmlSerializer
  */
 public class XmlSerializer {
-    private static String fileOut = "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>\n";
+    public static String fileOut = "";
 
-    public static String serialize(Object object) {
-
-        Class<?> obj = object.getClass();
-        String name = "";
-        Object retrvObj = null;
-        String outString = "";
-
-        if (obj.isAnnotationPresent(XmlSerializeable.class)) {
-            for (Field f : obj.getDeclaredFields()) {
-                if (f.isAnnotationPresent(XmlField.class)) {
-
-                    f.setAccessible(true);
-                    Annotation annotationField = f.getAnnotation(XmlField.class);
-                    XmlField xf = (XmlField) annotationField;
-
-                    try {
-                        outString += retriveValue(f, object);
-                    } catch (IllegalArgumentException e) {
-                        e.printStackTrace();
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                    // if (xf.key().equals("")) {
-                    // name = f.getName();
-                    // } else {
-                    // name = xf.key();
-                    // }
-
-                    // try {
-                    // retrvObj = f.get(object);
-                    // } catch (IllegalArgumentException | IllegalAccessException e) {
-                    // e.printStackTrace();
-                    // }
-
-                    // if (t.equals(Set.class)) {
-                    // Set<?> value = (Set<?>) retrvObj;
-                    // for (Object o : value) {
-                    // try {
-                    // XmlSerializer.serialize(o);
-                    // } catch (NullPointerException e) {
-                    // fileOut += "Name: " + name + ", Value: " + o.toString() + "\n";
-                    // }
-                    // }
-                    // } else {
-                    // try {
-                    // XmlSerializer.serialize(retrvObj);
-                    // } catch (NullPointerException e) {
-                    // fileOut += "Name: " + name + ", Value: " + retrvObj + "\n";
-                    // }
-                    // }
-                }
-            }
-        }
-        return fileOut;
+    public static String parse(Object o){
+        String out = XmlSerializer.serialize(o);
+        fileOut = out;
+        return out;
     }
 
-    private static String retriveValue(Field field, Object object)
-            throws IllegalArgumentException, IllegalAccessException {
-
-        Type t = field.getType();
+    private static String serialize(Object object) {
         String out = "";
+        
+        Class<?> obj = object.getClass();
 
-        if (t.equals(Set.class)) {
-            Set<?> set = (Set<?>) field.get(object);
+        if (obj.isAnnotationPresent(XmlSerializeable.class)) {
+            Field[] fs = obj.getDeclaredFields();
 
-            for (Object object2 : set) {
-                Field[] f = object2.getClass().getFields();
-                for (int i = 0; i < f.length; i++) {
-                    out = XmlSerializer.retriveValue(f[i], object2);
+            for (int i = 0; i < fs.length; i++) {
+                Field f = fs[i];
+                if (f.isAnnotationPresent(XmlField.class)) {
+                    f.setAccessible(true);
+
+                    try {
+                        out += XmlSerializer.retriveValue(f, object);
+                    } catch (IllegalArgumentException | IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+
+                    f.setAccessible(false);
                 }
             }
-        } else {
-            Object o = field.get(object);
-            out += String.format("Name: %s, Value: %s\n", field.getName(), (String) o);
         }
+        obj = null;
+        return out;
+    }
+
+    private static String retriveValue(Field field, Object o0) throws IllegalArgumentException, IllegalAccessException, NullPointerException {
+
+        String out = "";
+        Type t = field.getType();
+        Object o1 = field.get(o0);
+
+        field.setAccessible(true);
+        if(o1 != null){
+            if (t.equals(Set.class)) {
+                Set<?> s = (Set<?>) o1;
+                
+                for(Object o2 : s){
+                    if (o2 != null) {
+                        System.out.println(o2.getClass().getName());
+                        out += XmlSerializer.serialize(o2);
+                    }
+                    o2 = null;
+                }
+                
+            } else if(!o1.getClass().getName().startsWith("java.")){
+                out += XmlSerializer.serialize(o1);
+
+            } else {
+                out += String.format("Name: %s, Value: %s\n", field.getName(), o1);
+            }
+        }
+        o1 = null;
+
         return out;
     }
 }

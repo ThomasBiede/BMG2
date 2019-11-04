@@ -1,6 +1,5 @@
 package app.hl7_types.message;
 
-import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
 import java.util.Set;
