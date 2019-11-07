@@ -198,6 +198,7 @@ public class NK1 {
 		String[] tokens = Utils.tokenizeHL7(HL7String, encodingCharacters.getFieldSeperator(),
 				encodingCharacters.getEscapeCharacter(), 39);
 		this.setIDNK1 = tokens[0];
+		System.out.println(tokens[0]);
 		this.nKName = Utils
 				.toSet(tokens[1], XPN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {

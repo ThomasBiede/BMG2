@@ -11,7 +11,8 @@ public class XmlSerializer {
     public static String fileOut = "";
 
     public static String parse(Object o){
-        String out = XmlSerializer.serialize(o);
+        String out = "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>";
+        out += XmlSerializer.serialize(o);
         fileOut = out;
         return out;
     }
@@ -56,7 +57,6 @@ public class XmlSerializer {
                 
                 for(Object o2 : s){
                     if (o2 != null) {
-                        System.out.println(o2.getClass().getName());
                         out += XmlSerializer.serialize(o2);
                     }
                     o2 = null;

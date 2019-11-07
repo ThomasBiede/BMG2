@@ -10,7 +10,8 @@ import app.parsing.Reader;
 public class TestClass {
 	public static void main(String[] args) {
 		try {
-			ADT_A01 a = new ADT_A01(Reader.readFile("/home/thomasbiede/Desktop/BMG2/HL7/src/test.txt"));
+			// /home/thomasbiede/Desktop/BMG2/HL7/src/test.txt
+			ADT_A01 a = new ADT_A01(Reader.readFile("C:/Users/thoma/Desktop/Prog-Git/BMG2/HL7/src/test.txt"));
 			// System.out.println(a);
 			String output = XmlSerializer.parse(a);			
 			System.out.println(output);
