@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import app.hl7_parser.XmlField;
-import app.hl7_parser.XmlSerializeable;
+import app.hl7_parser.Hl7Field;
+import app.hl7_parser.Hl7Serializeable;
 import app.hl7_types.datatype.*;
 import app.parsing.EncodingCharacters;
 
@@ -15,49 +15,49 @@ import app.parsing.Utils;
  * @author Thomas Biedermann
  * @author Daniel Karner
  */
-@XmlSerializeable
+@Hl7Serializeable
 public class DG1 {
-    @XmlField
+    @Hl7Field
     String setIDDG1;
-    @XmlField
+    @Hl7Field
     String diagnosisCodingMethod;
-    @XmlField
+    @Hl7Field
     String diagnosisCodeDG1;
-    @XmlField
+    @Hl7Field
     String diagnosisDescription;
-    @XmlField
+    @Hl7Field
     LocalDateTime diagnosisDateTime;
-    @XmlField
+    @Hl7Field
     String diagnosisType;
-    @XmlField
+    @Hl7Field
     String majorDiagnosticCategory;
-    @XmlField
+    @Hl7Field
     String diagnosticRelatedGroup;
-    @XmlField
+    @Hl7Field
     String dRGApprovalIndicator;
-    @XmlField
+    @Hl7Field
     String dRGGrouperReviewCode;
-    @XmlField
+    @Hl7Field
     String outlierType;
-    @XmlField
+    @Hl7Field
     double outlierDays;
-    @XmlField
+    @Hl7Field
     double outlierCost;
-    @XmlField
+    @Hl7Field
     String grouperVersionAndType;
-    @XmlField
+    @Hl7Field
     String diagnosisPriority;
-    @XmlField
+    @Hl7Field
     Set<XCN> diagnosingClinician;
-    @XmlField
+    @Hl7Field
     String diagnosisClassification;
-    @XmlField
+    @Hl7Field
     String confidentialIndicator;
-    @XmlField
+    @Hl7Field
     LocalDateTime attestationDateTime;
-    @XmlField
+    @Hl7Field
     String diagnosisIdentifier;
-    @XmlField
+    @Hl7Field
     String diagnosisActionCode;
 
     /**
@@ -137,7 +137,7 @@ public class DG1 {
         this.diagnosingClinician = Utils
                 .toSet(tokens[15], XCN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
                 .map(temp -> {
-                    return (XCN) temp;
+                    return new XCN(tokens[15], encodingCharacters);
                 }).collect(Collectors.toSet());
         this.diagnosisClassification = tokens[16];
         this.confidentialIndicator = tokens[17];

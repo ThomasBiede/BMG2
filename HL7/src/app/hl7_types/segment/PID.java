@@ -4,96 +4,97 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import app.hl7_parser.XmlField;
-import app.hl7_parser.XmlSerializeable;
-import app.hl7_types.datatype.*;
+import app.hl7_parser.Hl7Field;
+import app.hl7_parser.Hl7Serializeable;
+import app.hl7_types.datatype.XAD;
+import app.hl7_types.datatype.XPN;
+import app.hl7_types.datatype.XTN;
 import app.parsing.EncodingCharacters;
-
 import app.parsing.Utils;
 
 /**
  * @author Thomas Biedermann
  * @author Daniel Karner
  */
-@XmlSerializeable
+@Hl7Serializeable
 public class PID {
-    @XmlField
+    @Hl7Field
     String setIDPID;
-    @XmlField
+    @Hl7Field
     String patientID;
-    @XmlField
+    @Hl7Field
     Set<String> patientIdentifierList;
-    @XmlField
+    @Hl7Field
     Set<String> alternatePatientIDPID;
-    @XmlField
+    @Hl7Field
     Set<XPN> patientName;
-    @XmlField
+    @Hl7Field
     Set<XPN> mothersMaidenName;
-    @XmlField
+    @Hl7Field
     LocalDateTime dateTimeofBirth;
-    @XmlField
+    @Hl7Field
     String administrativeSex;
-    @XmlField
+    @Hl7Field
     Set<XPN> patientAlias;
-    @XmlField
+    @Hl7Field
     Set<String> race;
-    @XmlField
+    @Hl7Field
     Set<XAD> patientAddress;
-    @XmlField
+    @Hl7Field
     String countyCode;
-    @XmlField
+    @Hl7Field
     Set<XTN> phoneNumberHome;
-    @XmlField
+    @Hl7Field
     Set<XTN> phoneNumberBusiness;
-    @XmlField
+    @Hl7Field
     String primaryLanguage;
-    @XmlField
+    @Hl7Field
     String maritalStatus;
-    @XmlField
+    @Hl7Field
     String religion;
-    @XmlField
+    @Hl7Field
     String patientAccountNumber;
-    @XmlField
+    @Hl7Field
     String sSNNumberPatient;
-    @XmlField
+    @Hl7Field
     long driversLicenseNumberPatient;
-    @XmlField
+    @Hl7Field
     Set<String> mothersIdentifier;
-    @XmlField
+    @Hl7Field
     Set<String> ethnicGroup;
-    @XmlField
+    @Hl7Field
     String birthPlace;
-    @XmlField
+    @Hl7Field
     String multipleBirthIndicator;
-    @XmlField
+    @Hl7Field
     double birthOrder;
-    @XmlField
+    @Hl7Field
     Set<String> citizenship;
-    @XmlField
+    @Hl7Field
     String veteransMilitaryStatus;
-    @XmlField
+    @Hl7Field
     String nationality;
-    @XmlField
+    @Hl7Field
     LocalDateTime patientDeathDateandTime;
-    @XmlField
+    @Hl7Field
     String patientDeathIndicator;
-    @XmlField
+    @Hl7Field
     String identityUnknownIndicator;
-    @XmlField
+    @Hl7Field
     Set<String> identityReliabilityCode;
-    @XmlField
+    @Hl7Field
     LocalDateTime lastUpdateDateTime;
-    @XmlField
+    @Hl7Field
     String lastUpdateFacility;
-    @XmlField
+    @Hl7Field
     String speciesCode;
-    @XmlField
+    @Hl7Field
     String breedCode;
-    @XmlField
+    @Hl7Field
     String strain;
-    @XmlField
+    @Hl7Field
     String productionClassCode;
-    @XmlField
+    @Hl7Field
     Set<String> tribalCitizenship;
 
     /**
@@ -205,19 +206,19 @@ public class PID {
         this.patientName = Utils
                 .toSet(tokens[4], XPN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
                 .map(temp -> {
-                    return (XPN) temp;
+                    return new XPN(tokens[4], encodingCharacters);
                 }).collect(Collectors.toSet());
         this.mothersMaidenName = Utils
                 .toSet(tokens[5], XPN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
                 .map(temp -> {
-                    return (XPN) temp;
+                    return new XPN(tokens[5], encodingCharacters);
                 }).collect(Collectors.toSet());
         this.dateTimeofBirth = (LocalDateTime) Utils.toObject(tokens[6], LocalDateTime.class);
         this.administrativeSex = tokens[7];
         this.patientAlias = Utils
                 .toSet(tokens[8], XPN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
                 .map(temp -> {
-                    return (XPN) temp;
+                    return new XPN(tokens[8], encodingCharacters);
                 }).collect(Collectors.toSet());
         this.race = Utils
                 .toSet(tokens[9], String.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters)
@@ -225,18 +226,18 @@ public class PID {
         this.patientAddress = Utils
                 .toSet(tokens[10], XAD.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
                 .map(temp -> {
-                    return (XAD) temp;
+                    return new XAD(tokens[10], encodingCharacters);
                 }).collect(Collectors.toSet());
         this.countyCode = tokens[11];
         this.phoneNumberHome = Utils
                 .toSet(tokens[12], XTN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
                 .map(temp -> {
-                    return (XTN) temp;
+                    return new XTN(tokens[12], encodingCharacters);
                 }).collect(Collectors.toSet());
         this.phoneNumberBusiness = Utils
                 .toSet(tokens[13], XTN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
                 .map(temp -> {
-                    return (XTN) temp;
+                    return new XTN(tokens[13], encodingCharacters);
                 }).collect(Collectors.toSet());
         this.primaryLanguage = tokens[14];
         this.maritalStatus = tokens[15];

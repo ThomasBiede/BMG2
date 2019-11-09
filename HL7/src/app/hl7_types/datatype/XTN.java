@@ -1,7 +1,7 @@
 package app.hl7_types.datatype;
 
-import app.hl7_parser.XmlField;
-import app.hl7_parser.XmlSerializeable;
+import app.hl7_parser.Hl7Field;
+import app.hl7_parser.Hl7Serializeable;
 import app.parsing.EncodingCharacters;
 
 import app.parsing.Utils;
@@ -10,32 +10,32 @@ import app.parsing.Utils;
  * @author Thomas Biedermann
  * @author Daniel Karner
  */
-@XmlSerializeable
+@Hl7Serializeable
 public class XTN 
 {
-    @XmlField
+    @Hl7Field
     String telephoneNumber;
-    @XmlField
+    @Hl7Field
     String telecommunicationUseCode;
-    @XmlField
+    @Hl7Field
     String telecommunicationEquipmentType;
-    @XmlField
+    @Hl7Field
     String emailAddress;
-    @XmlField
+    @Hl7Field
     String countryCode;
-    @XmlField
+    @Hl7Field
     String areaCityCode;
-    @XmlField
+    @Hl7Field
     String localNumber;
-    @XmlField
+    @Hl7Field
     String extension;
-    @XmlField
+    @Hl7Field
     String anyText;
-    @XmlField
+    @Hl7Field
     String extensionPrefix;
-    @XmlField
+    @Hl7Field
     String speedDialCode;
-    @XmlField
+    @Hl7Field
     String unformattedTelephoneNumber;
 
     /**

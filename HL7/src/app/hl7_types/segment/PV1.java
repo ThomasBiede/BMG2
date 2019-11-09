@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import app.hl7_parser.XmlField;
-import app.hl7_parser.XmlSerializeable;
+import app.hl7_parser.Hl7Field;
+import app.hl7_parser.Hl7Serializeable;
 import app.hl7_types.datatype.*;
 import app.parsing.EncodingCharacters;
 
@@ -17,111 +17,111 @@ import app.parsing.Utils;
  * @author Daniel Karner
  *
  */
-@XmlSerializeable
+@Hl7Serializeable
 public class PV1 {
-	@XmlField
+	@Hl7Field
 	String setIDPV1;
-	@XmlField
+	@Hl7Field
 	String patientClass;
-	@XmlField
+	@Hl7Field
 	String assignedPatientLocation;
-	@XmlField
+	@Hl7Field
 	String admissionType;
-	@XmlField
+	@Hl7Field
 	String preadmitNumber;
-	@XmlField
+	@Hl7Field
 	String priorPatientLocation;
-	@XmlField
+	@Hl7Field
 	Set<XCN> attendingDoctor;
-	@XmlField
+	@Hl7Field
 	Set<XCN> referringDoctor;
-	@XmlField
+	@Hl7Field
 	Set<XCN> consultingDoctor;
-	@XmlField
+	@Hl7Field
 	String hospitalService;
-	@XmlField
+	@Hl7Field
 	String temporaryLocation;
-	@XmlField
+	@Hl7Field
 	String preadmitTestIndicator;
-	@XmlField
+	@Hl7Field
 	String readmissionIndicator;
-	@XmlField
+	@Hl7Field
 	String admitSource;
-	@XmlField
+	@Hl7Field
 	Set<String> ambulatoryStatus;
-	@XmlField
+	@Hl7Field
 	String vIPIndicator;
-	@XmlField
+	@Hl7Field
 	Set<XCN> admittingDoctor;
-	@XmlField
+	@Hl7Field
 	String patientType;
-	@XmlField
+	@Hl7Field
 	String visitNumber;
-	@XmlField
+	@Hl7Field
 	Set<String> financialClass;
-	@XmlField
+	@Hl7Field
 	String chargePriceIndicator;
-	@XmlField
+	@Hl7Field
 	String courtesyCode;
-	@XmlField
+	@Hl7Field
 	String creditRating;
-	@XmlField
+	@Hl7Field
 	Set<String> contractCode;
-	@XmlField
+	@Hl7Field
 	Set<LocalDate> contractEffectiveDate;
-	@XmlField
+	@Hl7Field
 	Set<Double> contractAmount;
-	@XmlField
+	@Hl7Field
 	Set<Double> contractPeriod;
-	@XmlField
+	@Hl7Field
 	String interestCode;
-	@XmlField
+	@Hl7Field
 	String transfertoBadDebtCode;
-	@XmlField
+	@Hl7Field
 	LocalDate transfertoBadDebtDate;
-	@XmlField
+	@Hl7Field
 	String badDebtAgencyCode;
-	@XmlField
+	@Hl7Field
 	double badDebtTransferAmount;
-	@XmlField
+	@Hl7Field
 	double badDebtRecoveryAmount;
-	@XmlField
+	@Hl7Field
 	String deleteAccountIndicator;
-	@XmlField
+	@Hl7Field
 	LocalDate deleteAccountDate;
-	@XmlField
+	@Hl7Field
 	String dischargeDisposition;
-	@XmlField
+	@Hl7Field
 	String dischargedtoLocation;
-	@XmlField
+	@Hl7Field
 	String dietType;
-	@XmlField
+	@Hl7Field
 	String servicingFacility;
-	@XmlField
+	@Hl7Field
 	String bedStatus;
-	@XmlField
+	@Hl7Field
 	String accountStatus;
-	@XmlField
+	@Hl7Field
 	String pendingLocation;
-	@XmlField
+	@Hl7Field
 	String priorTemporaryLocation;
-	@XmlField
+	@Hl7Field
 	LocalDateTime admitDateTime;
-	@XmlField
+	@Hl7Field
 	Set<LocalDateTime> dischargeDateTime;
-	@XmlField
+	@Hl7Field
 	double currentPatientBalance;
-	@XmlField
+	@Hl7Field
 	double totalCharges;
-	@XmlField
+	@Hl7Field
 	double totalAdjustments;
-	@XmlField
+	@Hl7Field
 	double totalPayments;
-	@XmlField
+	@Hl7Field
 	String alternateVisitID;
-	@XmlField
+	@Hl7Field
 	String visitIndicator;
-	@XmlField
+	@Hl7Field
 	Set<XCN> otherHealthcareProvider;
 
 	/**
@@ -263,17 +263,17 @@ public class PV1 {
 		this.attendingDoctor = Utils
 				.toSet(tokens[6], XCN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XCN) temp;
+					return new XCN(tokens[6], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.referringDoctor = Utils
 				.toSet(tokens[7], XCN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XCN) temp;
+					return new XCN(tokens[7], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.consultingDoctor = Utils
 				.toSet(tokens[8], XCN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XCN) temp;
+					return new XCN(tokens[8], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.hospitalService = tokens[9];
 		this.temporaryLocation = tokens[10];
@@ -286,7 +286,7 @@ public class PV1 {
 		this.admittingDoctor = Utils
 				.toSet(tokens[16], XCN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XCN) temp;
+					return new XCN(tokens[16], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.patientType = tokens[17];
 		this.visitNumber = tokens[18];
@@ -340,7 +340,7 @@ public class PV1 {
 		this.otherHealthcareProvider = Utils
 				.toSet(tokens[51], XCN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XCN) temp;
+					return new XCN(tokens[51], encodingCharacters);
 				}).collect(Collectors.toSet());
 	}
 

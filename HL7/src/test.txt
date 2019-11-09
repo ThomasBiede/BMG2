@@ -1,10 +1,7 @@
-MSH|^~\&|Karner_parse|Karner_medical|KIS|Totenscheinausstellungsundaufbewahrungsstelle|20191022064900||ADT^A01^ADT_A01|BEPO42069|P^I|2.5.1^AUT|||AL|AL|AUT|ASCII
-EVN|A01|20191022^D|201910220420^M|1234567890^Doofenshmirtz^Heinz^^^Evil Scientist
-PID|||4120130801|Karner^Daniel^^^Sir^PHE||20010813^D|A||1002-5~2076-8|An der Olsa^^Neumarkt^Steiermark^8820^AUT^H||0463511005|||W|QUA
-PD1|C|A|||F||N
-NK1|a1234567890|Karner^Franz|FTH|An der Olsa^^Neumarkt^Steiermark^8820^AUT^H|1234567890||C
-NK1|b1234567890|Biedermann^Thomas|DEP|^^^Klagenfurt^K�rnten^9020^AUT^H|1234567890
-NK1|c1234567890|Kr�pfl^Julia|SPO|^^^Neuhaus^K�rnten^9587^AUT^H|1234567890
-PV1||I||R||0815^Kopper^Dieter^^^Dr^MD|4711^Platzer^G�nther^^^Dr^PHE||MED
-DG1|1234|T65.92XA|Much drugs|201910220420^M|F
-DG1|5678|X80.XXXA|Much dead|201910220500^M|F|||||||||1
+MSH|^~\&|KIS|HNO|LIS|Blutanalyse|20181023083240||ADT^A01^ADT_A01|123456789|P|2.8.1
+EVN|20190101083000|20190101083000|?|Operator^Magda
+PID|||1234||Mustermann^Max||20010203|M|||Mössingerstraße 25^^Klagenfurt am W.^^9020||046337978||||||1234010200|1234|4711
+NK1|2|Mustermann^Erika|MTH|Mössingerstraße 25^^Klagenfurt am Wörthersee^^9020|046337978
+NK1|23|Mustermann^Erik|FTH|Mössingerstraße 25^^Klagenfurt am Wörthersee^^9020|046337978
+PV1||I|||||400^Musterdoktor^Hans^^^Dr|500^Musterdoktorin^Johanna^^^DDr
+DG1|2323||H65.0||20190101083000|A

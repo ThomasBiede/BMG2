@@ -125,6 +125,7 @@ public class Utils
 			put("NK1", NK1.class);
 			put("PID", PID.class);
 			put("PV1", PV1.class);
+			put("PD1", PD1.class);
 		}
 	};
 

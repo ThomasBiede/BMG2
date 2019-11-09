@@ -3,8 +3,8 @@ package app.hl7_types.segment;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
-import app.hl7_parser.XmlField;
-import app.hl7_parser.XmlSerializeable;
+import app.hl7_parser.Hl7Field;
+import app.hl7_parser.Hl7Serializeable;
 import app.parsing.EncodingCharacters;
 
 import app.parsing.Utils;
@@ -14,49 +14,49 @@ import app.parsing.Utils;
  * @author Daniel Karner
  *
  */
-@XmlSerializeable
+@Hl7Serializeable
 public class MSH {
-    @XmlField
+    @Hl7Field
     String fieldSeparator;
-    @XmlField
+    @Hl7Field
     String encodingChars;
-    @XmlField
+    @Hl7Field
     String sendingApplication;
-    @XmlField
+    @Hl7Field
     String sendingFacility;
-    @XmlField
+    @Hl7Field
     String receivingApplication;
-    @XmlField
+    @Hl7Field
     String receivingFacility;
-    @XmlField
+    @Hl7Field
     LocalDateTime dateTimeOfMessage;
-    @XmlField
+    @Hl7Field
     String security;
-    @XmlField
+    @Hl7Field
     String messageType;
-    @XmlField
+    @Hl7Field
     String messageControlID;
-    @XmlField
+    @Hl7Field
     String processingID;
-    @XmlField
+    @Hl7Field
     String versionID;
-    @XmlField
+    @Hl7Field
     long sequenceNumber;
-    @XmlField
+    @Hl7Field
     String continuationPointer;
-    @XmlField
+    @Hl7Field
     String acceptAcknowledgmentType;
-    @XmlField
+    @Hl7Field
     String applicationAcknowledgmentType;
-    @XmlField
+    @Hl7Field
     String countryCode;
-    @XmlField
+    @Hl7Field
     Set<String> characterSet;
-    @XmlField
+    @Hl7Field
     String principalLanguageOfMessage;
-    @XmlField
+    @Hl7Field
     String alternateCharacterSetHandlingScheme;
-    @XmlField
+    @Hl7Field
     Set<String> messageProfileIdentifier;
 
     /**

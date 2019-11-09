@@ -2,8 +2,8 @@ package app.hl7_types.datatype;
 
 import java.time.LocalDate;
 
-import app.hl7_parser.XmlField;
-import app.hl7_parser.XmlSerializeable;
+import app.hl7_parser.Hl7Field;
+import app.hl7_parser.Hl7Serializeable;
 import app.parsing.EncodingCharacters;
 
 import app.parsing.Utils;
@@ -12,36 +12,36 @@ import app.parsing.Utils;
  * @author Thomas Biedermann
  * @author Daniel Karner
  */
-@XmlSerializeable
+@Hl7Serializeable
 public class XPN {
 
-    @XmlField
+    @Hl7Field
     String familyName;
-    @XmlField
+    @Hl7Field
     String givenName;
-    @XmlField
+    @Hl7Field
     String secondAndFurtherGivenNamesOrInitialsThereof;
-    @XmlField
+    @Hl7Field
     String suffixegJrOrIii;
-    @XmlField
+    @Hl7Field
     String prefixegDr;
-    @XmlField
+    @Hl7Field
     String degreeegMd;
-    @XmlField
+    @Hl7Field
     String nameTypeCode;
-    @XmlField
+    @Hl7Field
     String nameRepresentationCode;
-    @XmlField
+    @Hl7Field
     String nameContext;
-    @XmlField
+    @Hl7Field
     String nameValidityRange;
-    @XmlField
+    @Hl7Field
     String nameAssemblyOrder;
-    @XmlField
+    @Hl7Field
     LocalDate effectiveDate;
-    @XmlField
+    @Hl7Field
     LocalDate expirationDate;
-    @XmlField
+    @Hl7Field
     String professionalSuffix;
 
     /**

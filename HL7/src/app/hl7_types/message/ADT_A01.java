@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import app.hl7_parser.XmlField;
-import app.hl7_parser.XmlSerializeable;
+import app.hl7_parser.Hl7Field;
+import app.hl7_parser.Hl7Serializeable;
 import app.hl7_types.segment.*;
 import app.parsing.EncodingCharacters;
 import app.parsing.Utils;
@@ -15,62 +15,62 @@ import app.parsing.Utils;
  * @author Thomas Biedermann
  * @author Daniel Karner
  */
-@XmlSerializeable
+@Hl7Serializeable
 public class ADT_A01 {
     // Fields
-    @XmlField
+    @Hl7Field
     MSH messageHeader;
-    @XmlField
+    @Hl7Field
     Set<String> softwareSegment = new HashSet<>();
-    @XmlField
+    @Hl7Field
     EVN eventType;
-    @XmlField
+    @Hl7Field
     PID patientIdentification;
-    @XmlField
-    String patientAdditionalDemographic;
-    @XmlField
+    @Hl7Field
+    PD1 patientAdditionalDemographic;
+    @Hl7Field
     Set<String> role = new HashSet<>();
-    @XmlField
+    @Hl7Field
     Set<NK1> nextofKinAssociatedParties = new HashSet<>();
-    @XmlField
+    @Hl7Field
     PV1 patientVisit;
-    @XmlField
+    @Hl7Field
     String patientVisitAdditionalInformation;
-    @XmlField
+    @Hl7Field
     Set<String> role1 = new HashSet<>();
-    @XmlField
+    @Hl7Field
     Set<String> disability = new HashSet<>();
-    @XmlField
+    @Hl7Field
     Set<String> observationResult = new HashSet<>();
-    @XmlField
+    @Hl7Field
     Set<String> patientAllergyInformation = new HashSet<>();
-    @XmlField
+    @Hl7Field
     Set<DG1> diagnosis = new HashSet<>();
-    @XmlField
+    @Hl7Field
     String diagnosisRelatedGroup;
     // Procedures
-    @XmlField
+    @Hl7Field
     String procedures;
-    @XmlField
+    @Hl7Field
     Set<String> role2 = new HashSet<>();
-    @XmlField
+    @Hl7Field
     Set<String> guarantor = new HashSet<>();
     // Insurance
-    @XmlField
+    @Hl7Field
     String insurance;
-    @XmlField
+    @Hl7Field
     String insuranceAdditionalInformation;
-    @XmlField
+    @Hl7Field
     Set<String> insuranceAdditionalInformationCertification = new HashSet<>();
-    @XmlField
+    @Hl7Field
     Set<String> role3 = new HashSet<>();
-    @XmlField
+    @Hl7Field
     String accident;
-    @XmlField
+    @Hl7Field
     String uB82;
-    @XmlField
+    @Hl7Field
     String uB92Data;
-    @XmlField
+    @Hl7Field
     String patientDeathandAutopsy;
 
     /**
@@ -102,7 +102,7 @@ public class ADT_A01 {
      * @param patientDeathandAutopsy
      */
     public ADT_A01(MSH messageHeader, Set<String> softwareSegment, EVN eventType, PID patientIdentification,
-            String patientAdditionalDemographic, Set<String> role, Set<NK1> nextofKinAssociatedParties,
+            PD1 patientAdditionalDemographic, Set<String> role, Set<NK1> nextofKinAssociatedParties,
             PV1 patientVisit, String patientVisitAdditionalInformation, Set<String> role1, Set<String> disability,
             Set<String> observationResult, Set<String> patientAllergyInformation, Set<DG1> diagnosis,
             String diagnosisRelatedGroup, String procedures, Set<String> role2, Set<String> guarantor, String insurance,
@@ -174,8 +174,7 @@ public class ADT_A01 {
             line++;
         if (line >= segmentStrings.length)
             return;
-        if ((this.patientAdditionalDemographic = (String) Utils.objectFromMessageLine(segmentStrings[line],
-                "PD1")) != null)
+        if ((this.patientAdditionalDemographic = (PD1) Utils.objectFromMessageLine(segmentStrings[line], "PD1")) != null)
             line++;
         if (line >= segmentStrings.length)
             return;
@@ -400,7 +399,7 @@ public class ADT_A01 {
     /**
      * @return the patientAdditionalDemographic
      */
-    public String getPatientAdditionalDemographic() {
+    public PD1 getPatientAdditionalDemographic() {
         return patientAdditionalDemographic;
     }
 

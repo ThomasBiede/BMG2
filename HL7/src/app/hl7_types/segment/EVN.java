@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import app.hl7_parser.XmlField;
-import app.hl7_parser.XmlSerializeable;
+import app.hl7_parser.Hl7Field;
+import app.hl7_parser.Hl7Serializeable;
 import app.hl7_types.datatype.*;
 import app.parsing.EncodingCharacters;
 
@@ -15,21 +15,21 @@ import app.parsing.Utils;
  * @author Thomas Biedermann
  * @author Daniel Karner
  */
-@XmlSerializeable
+@Hl7Serializeable
 public class EVN {
-    @XmlField
+    @Hl7Field
     String eventTypeCode;
-    @XmlField
+    @Hl7Field
     LocalDateTime recordedDateTime;
-    @XmlField
+    @Hl7Field
     LocalDateTime dateTimePlannedEvent;
-    @XmlField
+    @Hl7Field
     String eventReasonCode;
-    @XmlField
+    @Hl7Field
     Set<XCN> operatorID;
-    @XmlField
+    @Hl7Field
     LocalDateTime eventOccurred;
-    @XmlField
+    @Hl7Field
     String eventFacility;
 
     /**
@@ -66,7 +66,7 @@ public class EVN {
         this.operatorID = Utils
                 .toSet(tokens[4], XCN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
                 .map(temp -> {
-                    return (XCN) temp;
+                    return new XCN(tokens[4], encodingCharacters);
                 }).collect(Collectors.toSet());
         this.eventOccurred = (LocalDateTime) Utils.toObject(tokens[5], LocalDateTime.class);
         this.eventFacility = tokens[6];

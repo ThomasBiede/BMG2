@@ -2,8 +2,8 @@ package app.hl7_types.datatype;
 
 import java.time.LocalDate;
 
-import app.hl7_parser.XmlField;
-import app.hl7_parser.XmlSerializeable;
+import app.hl7_parser.Hl7Field;
+import app.hl7_parser.Hl7Serializeable;
 import app.parsing.EncodingCharacters;
 import app.parsing.Utils;
 
@@ -12,35 +12,35 @@ import app.parsing.Utils;
  * @author Daniel Karner
  *
  */
-@XmlSerializeable
+@Hl7Serializeable
 public class XAD {
-    @XmlField
+    @Hl7Field
     String streetAddress;
-    @XmlField
+    @Hl7Field
     String otherDesignation;
-    @XmlField
+    @Hl7Field
     String city;
-    @XmlField
+    @Hl7Field
     String stateOrProvince;
-    @XmlField
+    @Hl7Field
     String zipOrPostalCode;
-    @XmlField
+    @Hl7Field
     String country;
-    @XmlField
+    @Hl7Field
     String addressType;
-    @XmlField
+    @Hl7Field
     String otherGeographicDesignation;
-    @XmlField
+    @Hl7Field
     String countyParishCode;
-    @XmlField
+    @Hl7Field
     String censusTract;
-    @XmlField
+    @Hl7Field
     String addressRepresentationCode;
-    @XmlField
+    @Hl7Field
     Object addressValidityRange;
-    @XmlField
+    @Hl7Field
     LocalDate effectiveDate;
-    @XmlField
+    @Hl7Field
     LocalDate expirationDate;
 
     /**

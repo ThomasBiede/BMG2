@@ -3,8 +3,8 @@ package app.hl7_types.segment;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import app.hl7_parser.XmlField;
-import app.hl7_parser.XmlSerializeable;
+import app.hl7_parser.Hl7Field;
+import app.hl7_parser.Hl7Serializeable;
 import app.hl7_types.datatype.*;
 import app.parsing.EncodingCharacters;
 
@@ -16,85 +16,85 @@ import java.util.stream.Collectors;
  * @author Thomas Biedermann
  * @author Daniel Karner
  */
-@XmlSerializeable
+@Hl7Serializeable
 public class NK1 {
-	@XmlField
+	@Hl7Field
 	String setIDNK1;
-	@XmlField
+	@Hl7Field
 	Set<XPN> nKName;
-	@XmlField
+	@Hl7Field
 	String relationship;
-	@XmlField
+	@Hl7Field
 	Set<XAD> address;
-	@XmlField
+	@Hl7Field
 	Set<XTN> phoneNumber;
-	@XmlField
+	@Hl7Field
 	Set<XTN> businessPhoneNumber;
-	@XmlField
+	@Hl7Field
 	String contactRole;
-	@XmlField
+	@Hl7Field
 	LocalDate startDate;
-	@XmlField
+	@Hl7Field
 	LocalDate endDate;
-	@XmlField
+	@Hl7Field
 	String nextofKinAssociatedPartiesJobTitle;
-	@XmlField
+	@Hl7Field
 	String nextofKinAssociatedPartiesJobCodeClass;
-	@XmlField
+	@Hl7Field
 	String nextofKinAssociatedPartiesEmployeeNumber;
-	@XmlField
+	@Hl7Field
 	Set<String> organizationNameNK1;
-	@XmlField
+	@Hl7Field
 	String maritalStatus;
-	@XmlField
+	@Hl7Field
 	String administrativeSex;
-	@XmlField
+	@Hl7Field
 	LocalDateTime dateTimeofBirth;
-	@XmlField
+	@Hl7Field
 	Set<String> livingDependency;
-	@XmlField
+	@Hl7Field
 	Set<String> ambulatoryStatus;
-	@XmlField
+	@Hl7Field
 	Set<String> citizenship;
-	@XmlField
+	@Hl7Field
 	String primaryLanguage;
-	@XmlField
+	@Hl7Field
 	String livingArrangement;
-	@XmlField
+	@Hl7Field
 	String publicityCode;
-	@XmlField
+	@Hl7Field
 	String protectionIndicator;
-	@XmlField
+	@Hl7Field
 	String studentIndicator;
-	@XmlField
+	@Hl7Field
 	String religion;
-	@XmlField
+	@Hl7Field
 	Set<XPN> mothersMaidenName;
-	@XmlField
+	@Hl7Field
 	String nationality;
-	@XmlField
+	@Hl7Field
 	Set<String> ethnicGroup;
-	@XmlField
+	@Hl7Field
 	Set<String> contactReason;
-	@XmlField
+	@Hl7Field
 	Set<XPN> contactPersonsName;
-	@XmlField
+	@Hl7Field
 	Set<XTN> contactPersonsTelephoneNumber;
-	@XmlField
+	@Hl7Field
 	Set<XAD> contactPersonsAddress;
-	@XmlField
+	@Hl7Field
 	Set<String> nextofKinAssociatedPartysIdentifiers;
-	@XmlField
+	@Hl7Field
 	String jobStatus;
-	@XmlField
+	@Hl7Field
 	Set<String> race;
-	@XmlField
+	@Hl7Field
 	String handicap;
-	@XmlField
+	@Hl7Field
 	String contactPersonSocialSecurityNumber;
-	@XmlField
+	@Hl7Field
 	String nextofKinBirthPlace;
-	@XmlField
+	@Hl7Field
 	String vIPIndicator;
 
 	/**
@@ -198,27 +198,26 @@ public class NK1 {
 		String[] tokens = Utils.tokenizeHL7(HL7String, encodingCharacters.getFieldSeperator(),
 				encodingCharacters.getEscapeCharacter(), 39);
 		this.setIDNK1 = tokens[0];
-		System.out.println(tokens[0]);
 		this.nKName = Utils
 				.toSet(tokens[1], XPN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XPN) temp;
+					return new XPN(tokens[1], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.relationship = tokens[2];
 		this.address = Utils
 				.toSet(tokens[3], XAD.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XAD) temp;
+					return new XAD(tokens[3], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.phoneNumber = Utils
 				.toSet(tokens[4], XTN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XTN) temp;
+					return new XTN(tokens[4], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.businessPhoneNumber = Utils
 				.toSet(tokens[5], XTN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XTN) temp;
+					return new XTN(tokens[5], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.contactRole = tokens[6];
 		this.startDate = (LocalDate) Utils.toObject(tokens[7], LocalDate.class);
@@ -250,7 +249,7 @@ public class NK1 {
 		this.mothersMaidenName = Utils
 				.toSet(tokens[25], XPN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XPN) temp;
+					return new XPN(tokens[25], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.nationality = tokens[26];
 		this.ethnicGroup = Utils
@@ -262,17 +261,17 @@ public class NK1 {
 		this.contactPersonsName = Utils
 				.toSet(tokens[29], XPN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XPN) temp;
+					return new XPN(tokens[29], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.contactPersonsTelephoneNumber = Utils
 				.toSet(tokens[30], XTN.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XTN) temp;
+					return new XTN(tokens[30], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.contactPersonsAddress = Utils
 				.toSet(tokens[31], XAD.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters).stream()
 				.map(temp -> {
-					return (XAD) temp;
+					return new XAD(tokens[31], encodingCharacters);
 				}).collect(Collectors.toSet());
 		this.nextofKinAssociatedPartysIdentifiers = Utils
 				.toSet(tokens[32], String.class, encodingCharacters.getFieldRepeatSeperator(), encodingCharacters)
