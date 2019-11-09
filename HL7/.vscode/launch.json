@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestClass",
+            "request": "launch",
+            "mainClass": "app.TestClass",
+            "projectName": "HL7"
+        }
+    ]
+}
