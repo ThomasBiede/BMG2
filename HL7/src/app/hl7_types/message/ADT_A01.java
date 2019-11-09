@@ -185,9 +185,10 @@ public class ADT_A01 {
         if (line >= segmentStrings.length)
             return;
         this.nextofKinAssociatedParties = Utils.allSegmentsFromGroup(segmentStrings, line, "NK1").stream().map(temp -> {
-            return new NK1(segmentStrings[line], encodingCharacters);
+            line++;
+            return new NK1(segmentStrings[line-1], encodingCharacters);
         }).collect(Collectors.toSet());
-        line += this.nextofKinAssociatedParties.size();
+        // line += this.nextofKinAssociatedParties.size();
         if (line >= segmentStrings.length)
             return;
         if ((this.patientVisit = (PV1) Utils.objectFromMessageLine(segmentStrings[line], "PV1")) != null)
@@ -220,9 +221,10 @@ public class ADT_A01 {
         if (line >= segmentStrings.length)
             return;
         this.diagnosis = Utils.allSegmentsFromGroup(segmentStrings, line, "DG1").stream().map(temp -> {
-            return new DG1(segmentStrings[line], encodingCharacters);
+            line++;
+            return new DG1(segmentStrings[line-1], encodingCharacters);
         }).collect(Collectors.toSet());
-        line += this.diagnosis.size();
+        // line += this.diagnosis.size();
         if (line >= segmentStrings.length)
             return;
         if ((this.diagnosisRelatedGroup = (String) Utils.objectFromMessageLine(segmentStrings[line], "DRG")) != null)
