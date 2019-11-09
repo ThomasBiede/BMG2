@@ -1,4 +1,4 @@
-package app.annotations;
+package app.hl7_parser;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

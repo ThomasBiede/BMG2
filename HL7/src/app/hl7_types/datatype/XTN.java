@@ -1,7 +1,7 @@
 package app.hl7_types.datatype;
 
-import app.annotations.XmlField;
-import app.annotations.XmlSerializeable;
+import app.hl7_parser.XmlField;
+import app.hl7_parser.XmlSerializeable;
 import app.parsing.EncodingCharacters;
 
 import app.parsing.Utils;

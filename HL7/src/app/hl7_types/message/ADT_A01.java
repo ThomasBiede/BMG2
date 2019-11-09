@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import app.annotations.XmlField;
-import app.annotations.XmlSerializeable;
+import app.hl7_parser.XmlField;
+import app.hl7_parser.XmlSerializeable;
 import app.hl7_types.segment.*;
 import app.parsing.EncodingCharacters;
 import app.parsing.Utils;
@@ -145,6 +145,7 @@ public class ADT_A01 {
      * @throws NoSuchMethodException
      * @throws SecurityException
      */
+    int line;
     public ADT_A01(String HL7String) throws InstantiationException, IllegalAccessException, IllegalArgumentException,
             InvocationTargetException, NoSuchMethodException, SecurityException {
         // Spaghoot
@@ -152,7 +153,7 @@ public class ADT_A01 {
             return;
         EncodingCharacters encodingCharacters = Utils.getEncodingCharacters(HL7String);
         String[] segmentStrings = HL7String.split("\n");
-        int line = 0;
+        line = 0;
 
         if (line >= segmentStrings.length)
             return;
@@ -184,7 +185,7 @@ public class ADT_A01 {
         if (line >= segmentStrings.length)
             return;
         this.nextofKinAssociatedParties = Utils.allSegmentsFromGroup(segmentStrings, line, "NK1").stream().map(temp -> {
-            return new NK1(String.valueOf(temp), encodingCharacters);
+            return new NK1(segmentStrings[line], encodingCharacters);
         }).collect(Collectors.toSet());
         line += this.nextofKinAssociatedParties.size();
         if (line >= segmentStrings.length)
@@ -219,7 +220,7 @@ public class ADT_A01 {
         if (line >= segmentStrings.length)
             return;
         this.diagnosis = Utils.allSegmentsFromGroup(segmentStrings, line, "DG1").stream().map(temp -> {
-            return new DG1(String.valueOf(temp), encodingCharacters);
+            return new DG1(segmentStrings[line], encodingCharacters);
         }).collect(Collectors.toSet());
         line += this.diagnosis.size();
         if (line >= segmentStrings.length)

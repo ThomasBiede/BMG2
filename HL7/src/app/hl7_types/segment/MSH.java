@@ -3,8 +3,8 @@ package app.hl7_types.segment;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
-import app.annotations.XmlField;
-import app.annotations.XmlSerializeable;
+import app.hl7_parser.XmlField;
+import app.hl7_parser.XmlSerializeable;
 import app.parsing.EncodingCharacters;
 
 import app.parsing.Utils;

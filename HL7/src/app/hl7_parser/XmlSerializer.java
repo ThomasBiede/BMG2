@@ -1,4 +1,4 @@
-package app.annotations;
+package app.hl7_parser;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
@@ -11,7 +11,7 @@ public class XmlSerializer {
     public static String fileOut = "";
 
     public static String parse(Object o){
-        String out = "<?xml version='1.0' encoding='UTF-8' standalone='yes'?>";
+        String out = "";
         out += XmlSerializer.serialize(o);
         fileOut = out;
         return out;
@@ -59,7 +59,6 @@ public class XmlSerializer {
                     if (o2 != null) {
                         out += XmlSerializer.serialize(o2);
                     }
-                    o2 = null;
                 }
                 
             } else if(!o1.getClass().getName().startsWith("java.")){
@@ -69,8 +68,6 @@ public class XmlSerializer {
                 out += String.format("Name: %s, Value: %s\n", field.getName(), o1);
             }
         }
-        o1 = null;
-
         return out;
     }
 }
