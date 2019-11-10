@@ -123,7 +123,6 @@ public class PV1 {
 	String visitIndicator;
 	@Hl7Field
 	Set<XCN> otherHealthcareProvider;
-
 	/**
 	 * @param setIDPV1
 	 * @param patientClass

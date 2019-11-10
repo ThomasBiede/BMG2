@@ -48,14 +48,12 @@ public class ADT_A01 {
     Set<DG1> diagnosis = new HashSet<>();
     @Hl7Field
     String diagnosisRelatedGroup;
-    // Procedures
     @Hl7Field
     String procedures;
     @Hl7Field
     Set<String> role2 = new HashSet<>();
     @Hl7Field
     Set<String> guarantor = new HashSet<>();
-    // Insurance
     @Hl7Field
     String insurance;
     @Hl7Field

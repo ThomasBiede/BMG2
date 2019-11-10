@@ -15,6 +15,7 @@ import app.parsing.Utils;
 @Hl7Serializeable(layer = 2)
 public class XPN {
 
+    
     @Hl7Field
     String familyName;
     @Hl7Field

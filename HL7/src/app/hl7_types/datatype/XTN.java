@@ -13,6 +13,7 @@ import app.parsing.Utils;
 @Hl7Serializeable(layer = 2)
 public class XTN 
 {
+    
     @Hl7Field
     String telephoneNumber;
     @Hl7Field

@@ -96,7 +96,6 @@ public class NK1 {
 	String nextofKinBirthPlace;
 	@Hl7Field
 	String vIPIndicator;
-
 	/**
 	 * @param setIDNK1
 	 * @param nKName

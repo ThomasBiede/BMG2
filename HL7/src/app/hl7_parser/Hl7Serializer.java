@@ -3,6 +3,7 @@ package app.hl7_parser;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 import app.parsing.Utils;
 
@@ -15,39 +16,34 @@ import app.parsing.Utils;
 // TODO layer richtig erhöhen und verringern
 
 public class Hl7Serializer {
-    private static String[] layerSep = new String[]{
-        "",
-        "|",
-        "^",
-        "~",
-        "\\",
-        "&"
-    };
+    private static String[] layerSep = new String[] { "", "|", "^", "~", "\\", "&" };
 
     public static String parse(Object o) {
         String out = "";
         try {
             out += Hl7Serializer.serialize(o);
-        } catch (IllegalArgumentException | IllegalAccessException | NullPointerException  e) {
+        } catch (IllegalArgumentException | IllegalAccessException | NullPointerException e) {
             e.printStackTrace();
         }
         return out;
     }
 
-    private static String serialize(Object object) throws IllegalArgumentException, IllegalAccessException, NullPointerException {
+    private static String serialize(Object object)
+            throws IllegalArgumentException, IllegalAccessException, NullPointerException {
         String out = "";
         Class<?> obj = object.getClass();
 
         if (obj.isAnnotationPresent(Hl7Serializeable.class)) {
             int layer = obj.getAnnotation(Hl7Serializeable.class).layer();
             Field[] fs = obj.getDeclaredFields();
-            // int lastIndex = Hl7Serializer.getLastFieldIndex(fs, object);
-            for (int i = 0; i < fs.length; i++) {
+
+            int lastIndex = Hl7Serializer.getLastFieldIndex(fs, object);
+            for (int i = 0; i < lastIndex + 1; i++) {
                 Field f = fs[i];
                 if (f.isAnnotationPresent(Hl7Field.class)) {
                     f.setAccessible(true);
-                    out += Hl7Serializer.retriveValue(f, object, i, fs.length, layer);
-                    if (isSegment(object) && i == fs.length - 1) {
+                    out += Hl7Serializer.retriveValue(f, object, i, lastIndex + 1, layer);
+                    if (isSegment(object) && i == lastIndex) {
                         out += "\n";
                     }
                     f.setAccessible(false);
@@ -58,7 +54,8 @@ public class Hl7Serializer {
         return out;
     }
 
-    private static String retriveValue(Field field, Object o0, int c, int max, int layer) throws IllegalArgumentException, IllegalAccessException, NullPointerException {
+    private static String retriveValue(Field field, Object o0, int c, int max, int layer)
+            throws IllegalArgumentException, IllegalAccessException, NullPointerException {
         String out = "";
         Type t = field.getType();
         Object o1 = field.get(o0);
@@ -102,7 +99,7 @@ public class Hl7Serializer {
     private static boolean isSegment(Object o) {
         Set<String> keys = Utils.segmentIdMap.keySet();
         String className = o.getClass().getSimpleName();
-        
+
         if (keys.contains(className)) {
             return true;
         }
@@ -126,20 +123,28 @@ public class Hl7Serializer {
         return false;
     }
 
-    private static int getLastFieldIndex(Field[] fields, Object object)
-            throws IllegalArgumentException, IllegalAccessException {
-        /**
-         * ! Fuck Java hör auf die fields nach Namen zu sortieren 😠
-         */
-
+    private static int getLastFieldIndex(Field[] fields, Object object) throws IllegalArgumentException, IllegalAccessException {
         int c = fields.length - 1;
         while (c >= 0) {
             fields[c].setAccessible(true);
-            if (fields[c].get(object) == null) {
+            
+            try {
+                Object o = fields[c].get(object);
+
+                if (o.getClass().equals(HashSet.class)) {
+                    HashSet<?> s = (HashSet<?>) o;
+                    if (s.size() == 0) {
+                        c--;
+                    } else {
+                        break;
+                    }
+                } else if(o != null){
+                    break;
+                } 
+            } catch (NullPointerException e) {
                 c--;
-            } else {
-                break;
             }
+
             fields[c].setAccessible(false);
         }
         return c;

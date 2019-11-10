@@ -17,6 +17,7 @@ import app.parsing.Utils;
  */
 @Hl7Serializeable(layer = 1)
 public class DG1 {
+    
     @Hl7Field
     String setIDDG1;
     @Hl7Field
