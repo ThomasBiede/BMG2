@@ -14,7 +14,7 @@ import app.parsing.Utils;
  * @author Daniel Karner
  *
  */
-@Hl7Serializeable
+@Hl7Serializeable(layer = 1)
 public class MSH {
     @Hl7Field
     String fieldSeparator;

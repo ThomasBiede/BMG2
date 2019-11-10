@@ -17,7 +17,7 @@ import app.parsing.Utils;
  * @author Daniel Karner
  *
  */
-@Hl7Serializeable
+@Hl7Serializeable(layer = 1)
 public class PV1 {
 	@Hl7Field
 	String setIDPV1;

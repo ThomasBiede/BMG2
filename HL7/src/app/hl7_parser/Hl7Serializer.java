@@ -12,40 +12,44 @@ import app.parsing.Utils;
  * @author Thomas Biedermann
  */
 
- //TODO layer richtig erhöhen und verringern
- 
-public class Hl7Serializer {
-    private static String[] layerSep = new String[] { "", "|", "^", "~", "\\", "&" };
+// TODO layer richtig erhöhen und verringern
 
-    private static int layer = 0;
+public class Hl7Serializer {
+    private static String[] layerSep = new String[]{
+        "",
+        "|",
+        "^",
+        "~",
+        "\\",
+        "&"
+    };
 
     public static String parse(Object o) {
         String out = "";
-        out += Hl7Serializer.serialize(o);
+        try {
+            out += Hl7Serializer.serialize(o);
+        } catch (IllegalArgumentException | IllegalAccessException | NullPointerException  e) {
+            e.printStackTrace();
+        }
         return out;
     }
 
-    private static String serialize(Object object) {
+    private static String serialize(Object object) throws IllegalArgumentException, IllegalAccessException, NullPointerException {
         String out = "";
         Class<?> obj = object.getClass();
 
         if (obj.isAnnotationPresent(Hl7Serializeable.class)) {
+            int layer = obj.getAnnotation(Hl7Serializeable.class).layer();
             Field[] fs = obj.getDeclaredFields();
             // int lastIndex = Hl7Serializer.getLastFieldIndex(fs, object);
             for (int i = 0; i < fs.length; i++) {
                 Field f = fs[i];
                 if (f.isAnnotationPresent(Hl7Field.class)) {
                     f.setAccessible(true);
-
-                    try {
-                        out += Hl7Serializer.retriveValue(f, object, i, fs.length);
-                        if (isSegment(object) && i == fs.length - 1) {
-                            out += "\n";
-                        }
-                    } catch (IllegalArgumentException | IllegalAccessException e) {
-                        e.printStackTrace();
+                    out += Hl7Serializer.retriveValue(f, object, i, fs.length, layer);
+                    if (isSegment(object) && i == fs.length - 1) {
+                        out += "\n";
                     }
-
                     f.setAccessible(false);
                 }
             }
@@ -54,9 +58,7 @@ public class Hl7Serializer {
         return out;
     }
 
-    private static String retriveValue(Field field, Object o0, int c, int max)
-            throws IllegalArgumentException, IllegalAccessException, NullPointerException {
-
+    private static String retriveValue(Field field, Object o0, int c, int max, int layer) throws IllegalArgumentException, IllegalAccessException, NullPointerException {
         String out = "";
         Type t = field.getType();
         Object o1 = field.get(o0);
@@ -84,12 +86,12 @@ public class Hl7Serializer {
                 String msgField = "" + o1;
                 if ((msgField.equals("0") || msgField.equals("0.0"))) {
                     if (!(c + 1 == max)) {
-                        out += layerSep[layer - 1];
+                        out += layerSep[layer];
                     }
                 } else {
                     out += o1;
                     if (!(c + 1 == max)) {
-                        out += layerSep[layer - 1];
+                        out += layerSep[layer];
                     }
                 }
             }
@@ -100,7 +102,7 @@ public class Hl7Serializer {
     private static boolean isSegment(Object o) {
         Set<String> keys = Utils.segmentIdMap.keySet();
         String className = o.getClass().getSimpleName();
-
+        
         if (keys.contains(className)) {
             return true;
         }
@@ -121,11 +123,11 @@ public class Hl7Serializer {
         if (subSegments.contains(className)) {
             return true;
         }
-
         return false;
     }
 
-    private static int getLastFieldIndex(Field[] fields, Object object) {
+    private static int getLastFieldIndex(Field[] fields, Object object)
+            throws IllegalArgumentException, IllegalAccessException {
         /**
          * ! Fuck Java hör auf die fields nach Namen zu sortieren 😠
          */
@@ -133,13 +135,10 @@ public class Hl7Serializer {
         int c = fields.length - 1;
         while (c >= 0) {
             fields[c].setAccessible(true);
-            try {
-                if (fields[c].get(object) == null) {
-                    c--;
-                } else {
-                    break;
-                }
-            } catch (Exception e) {
+            if (fields[c].get(object) == null) {
+                c--;
+            } else {
+                break;
             }
             fields[c].setAccessible(false);
         }

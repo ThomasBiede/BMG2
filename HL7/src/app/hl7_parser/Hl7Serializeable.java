@@ -7,4 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Hl7Serializeable {}
+public @interface Hl7Serializeable {
+    public int layer() default 0;
+}

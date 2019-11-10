@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * @author Thomas Biedermann
  * @author Daniel Karner
  */
-@Hl7Serializeable
+@Hl7Serializeable(layer = 1)
 public class NK1 {
 	@Hl7Field
 	String setIDNK1;

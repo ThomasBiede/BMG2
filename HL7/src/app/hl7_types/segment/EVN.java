@@ -15,7 +15,7 @@ import app.parsing.Utils;
  * @author Thomas Biedermann
  * @author Daniel Karner
  */
-@Hl7Serializeable
+@Hl7Serializeable(layer = 1)
 public class EVN {
     @Hl7Field
     String eventTypeCode;

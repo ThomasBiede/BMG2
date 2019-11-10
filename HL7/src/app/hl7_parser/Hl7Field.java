@@ -7,6 +7,4 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface Hl7Field{
-    public String key() default "";
-}
+public @interface Hl7Field{}

@@ -12,7 +12,7 @@ import app.parsing.Utils;
  * @author Daniel Karner
  *
  */
-@Hl7Serializeable
+@Hl7Serializeable(layer = 2)
 public class XAD {
     @Hl7Field
     String streetAddress;

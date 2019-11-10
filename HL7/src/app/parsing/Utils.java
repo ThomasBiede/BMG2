@@ -17,7 +17,8 @@ import app.hl7_types.segment.*;
  * @author Daniel Karner
  */
 public class Utils 
-{
+{	
+	private static EncodingCharacters encodingCharacters;
 	/**
 	 * @param HL7String
 	 * @return DCO with encoding characters
@@ -25,7 +26,15 @@ public class Utils
 	public static EncodingCharacters getEncodingCharacters(String HL7String) 
 	{
 		String[] tokens = tokenizeHL7(HL7String, "|", "\\", 4);
-		return new EncodingCharacters("|", tokens[0], tokens[1], tokens[2], tokens[3]);
+		Utils.encodingCharacters = new EncodingCharacters("|", tokens[0], tokens[1], tokens[2], tokens[3]);
+		return Utils.encodingCharacters;
+	}
+
+	/**
+	 * @return encoding characters of the message
+	 */
+	public static EncodingCharacters getCurrentEncodingCharacters(){
+		return Utils.encodingCharacters;
 	}
 
 	/**

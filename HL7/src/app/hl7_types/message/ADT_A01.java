@@ -15,7 +15,7 @@ import app.parsing.Utils;
  * @author Thomas Biedermann
  * @author Daniel Karner
  */
-@Hl7Serializeable
+@Hl7Serializeable(layer=0)
 public class ADT_A01 {
     // Fields
     @Hl7Field

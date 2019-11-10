@@ -7,7 +7,7 @@ import app.parsing.EncodingCharacters;
 /**
  * PD1
  */
-@Hl7Serializeable
+@Hl7Serializeable(layer = 1)
 public class PD1 {
 
     @Hl7Field
